@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <div  style="margin-top:51px">
+    <%= link_to 'new post ', new_post_path  %>
+    |
+    <%= link_to 'all post ',  posts_path  %>
+    |
+    <% if user_signed_in? %>
+      |
+       <%=  link_to 'exit' , destroy_user_session_path, method: :delete %>
+      <% else %>
+       <%=  link_to 'sign up' , new_user_registration_path %>
+      |
+       <%=  link_to 'log in' , new_user_session_path %>
+    <% end %>
+  </div>
+
+  <%= yield %>
+  </body>
+</html>

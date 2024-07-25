@@ -1,0 +1,18 @@
+<h1>Список постов </h1>
+
+<% @posts.each do |post| %>
+<h2> <%= link_to post.title, post_path(post) %>  </h2>
+<h2
+  style=" display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: calc(1.2em * 3);"
+>
+  <%=  post.body  %>
+</h2>
+
+<% end %>
+
+<%= will_paginate @posts %>
