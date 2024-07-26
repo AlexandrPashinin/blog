@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   # get 'persons/profile'
   # get 'persons/profile', as: :posts
   resources :posts
+  resources :comments
 end

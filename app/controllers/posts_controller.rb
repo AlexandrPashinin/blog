@@ -1,21 +1,23 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :create, :edit, :update, :destroy]
   def index
     @posts = Post.paginate(page: params[:page], per_page: 2)
   end
 
-
   def show
+    @comments = @post.comments
   end
   def new
     @post = Post.new
   end
   def create
     @post = Post.new(post_params )
-    if @post.save
+    @post.user = current_user
+    if @post.save!
       redirect_to @post
     else
-      render :new
+      render :show
     end
   end
 
@@ -36,7 +38,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :user_id, :body)
+    params.require(:post).permit(:title, :body)
   end
 
   def set_post

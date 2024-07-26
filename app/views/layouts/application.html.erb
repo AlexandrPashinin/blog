@@ -12,13 +12,15 @@
 
   <body>
   <div  style="margin-top:51px">
-    <%= link_to 'new post ', new_post_path  %>
+    <%= link_to 'show post ', new_post_path  %>
     |
     <%= link_to 'all post ',  posts_path  %>
     |
     <% if user_signed_in? %>
       |
        <%=  link_to 'exit' , destroy_user_session_path, method: :delete %>
+       <%=  link_to 'edit profile' , edit_user_registration_path(@user)   %>
+
       <% else %>
        <%=  link_to 'sign up' , new_user_registration_path %>
       |

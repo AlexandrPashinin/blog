@@ -1,0 +1,16 @@
+
+<h1 style="margin-top:50px">comments:</h1>
+
+
+<% if @comment.present? %>
+  <% @comment.each do |c| %>
+    <p> <%= c.body %> </p>
+  <% end %>
+<% else %>
+  <p>Комментариев нет. Успейте  стать первым </p>
+  <div>
+    <%= с.label :body %>
+    <%= с.text_area :body %>
+  </div>
+
+<% end %>
