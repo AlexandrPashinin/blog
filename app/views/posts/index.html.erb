@@ -11,6 +11,9 @@
   max-height: calc(1.2em * 3);"
 >
   <%=  post.body  %>
+
+  <%= render 'posts/upvote_link', post: post %>
+  <%= render 'posts/downvote_link', post: post %>
 </h2>
 
 <% end %>

@@ -1,16 +1,29 @@
 
-<h1 style="margin-top:50px">comments:</h1>
+<h1 style="margin-top:50px">Комментарии:</h1>
 
+<% if @comments.present? %>
+  <% @comments.each do |c| %>
+    <div style="display: flex">
+      <p> <%= "#{@user.nik_name} оставил комментарий: " %></p>
+      <p><%=  c.body %></p>
+      <%= link_to 'Удалить', [@post, c], method: :delete, data: { confirm: 'Вы уверены?' } %>
 
-<% if @comment.present? %>
-  <% @comment.each do |c| %>
-    <p> <%= c.body %> </p>
+    </div>
   <% end %>
 <% else %>
-  <p>Комментариев нет. Успейте  стать первым </p>
-  <div>
-    <%= с.label :body %>
-    <%= с.text_area :body %>
-  </div>
-
+  <p>Комментариев нет. Успейте стать первым</p>
 <% end %>
+
+<div>
+  <%= form_with(model: [@post, @post.comments.build], local: true) do |f| %>
+    <div>
+      <%= f.label :body, "#{@user.nik_name}: Ваш комментарий" %>
+      <%= f.text_area :body %>
+    </div>
+    <div>
+      <%= f.submit "Отправить" %>
+    </div>
+  <% end %>
+</div>
+
+

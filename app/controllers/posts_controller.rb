@@ -5,8 +5,30 @@ class PostsController < ApplicationController
     @posts = Post.paginate(page: params[:page], per_page: 2)
   end
 
+  def upvote
+    @post = Post.find(params[:id])
+    if  current_user.voted_up_on?(@post )
+    @post.unvote_by(current_user )
+    else
+      @post.upvote_by(current_user)
+    end
+    render 'vote.js.erb'
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    if current_user.voted_down_on? @post
+      @post.unvote_by(current_user)
+    else
+      @post.downvote_by(current_user)
+    end
+    render "vote.js.erb"
+  end
+
   def show
     @comments = @post.comments
+    @user = current_user
+    @comment = Comment.new
   end
   def new
     @post = Post.new

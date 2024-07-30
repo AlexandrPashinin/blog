@@ -1,16 +1,16 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: messages
 #
 #  id         :integer          not null, primary key
-#  body       :string
+#  body       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  post_id    :integer
 #
+require "test_helper"
 
-one:
-  body: MyString
-
-two:
-  body: MyString
+class MessageTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
+end
