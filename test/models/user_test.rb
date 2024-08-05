@@ -22,7 +22,28 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
+  # setup do
+  #   @user = users(:one)
   # end
+  #
+  # test "user should be valid" do
+  #   puts @user.inspect
+  #   assert @user.valid?, @user.errors.full_messages.to_sentence
+  # end
+  #
+  # test "email should be present" do
+  #   @user.email = ""
+  #   assert_not @user.valid?
+  # end
+  #
+  # test "name should be present" do
+  #   @user.name = ""
+  #   assert_not @user.valid?
+  # end
+  #
+  # test " nik_name should be present" do
+  #   @user.nik_name = "      "
+  #   assert @user.valid?
+  # end
+
 end
